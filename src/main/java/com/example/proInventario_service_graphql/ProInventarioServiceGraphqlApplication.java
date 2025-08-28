@@ -20,29 +20,29 @@ public class ProInventarioServiceGraphqlApplication {
 		SpringApplication.run(ProInventarioServiceGraphqlApplication.class, args);
 	}
 
-	@Bean
-	CommandLineRunner commandLineRunner (CategoriaRepository categoriaRepository, ProductoRepository productoRepository) {
-		Random random = new Random();
-
-		return  args -> {
-			List.of("Computadores", "Telefonos", "Monitores", "Mouses").forEach(cat -> {
-				Categoria categoria = Categoria.builder().nombre(cat).build();
-				categoriaRepository.save(categoria);
-			});
-
-			categoriaRepository.findAll().forEach( categoria -> {
-				for (int i = 0; i < 10; i++) {
-					Producto producto = Producto.builder()
-							.nombre("Computadores"+i)
-							.precio(100+ Math.random()*50000)
-							.cantidad(random.nextInt(20))
-							.categoria(categoria)
-							.build();
-					productoRepository.save(producto);
-				}
-			});
-
-		};
-	}
+//	@Bean
+//	CommandLineRunner commandLineRunner (CategoriaRepository categoriaRepository, ProductoRepository productoRepository) {
+//		Random random = new Random();
+//
+//		return  args -> {
+//			List.of("Computadores", "Telefonos", "Monitores", "Mouses").forEach(cat -> {
+//				Categoria categoria = Categoria.builder().nombre(cat).build();
+//				categoriaRepository.save(categoria);
+//			});
+//
+//			categoriaRepository.findAll().forEach( categoria -> {
+//				for (int i = 0; i < 10; i++) {
+//					Producto producto = Producto.builder()
+//							.nombre("Computadores"+i)
+//							.precio(100+ Math.random()*50000)
+//							.cantidad(random.nextInt(20))
+//							.categoria(categoria)
+//							.build();
+//					productoRepository.save(producto);
+//				}
+//			});
+//
+//		};
+//	}
 
 }

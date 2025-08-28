@@ -1,14 +1,18 @@
 type Query{
     listarProductos: [Producto]
+    listarCategorias:[Categoria]
 }
 
-type  Query{
-    lista: [Producto]
-}
 
-type Categoria{
+
+type Producto{
     id:  Int,
     nombre: String,
     precio: Float,
     cantidad: Int
+}
+
+type Categoria{
+    id:  Int,
+    nombre: String
 }

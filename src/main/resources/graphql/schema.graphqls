@@ -21,7 +21,8 @@ type Categoria{
 
 type Mutation{
     guardarProducto(productoDto: ProductDto):Producto,
-    actualizarProducto(productNewDto: ProductNewDto): Producto
+    actualizarProducto(productNewDto: ProductNewDto): Producto,
+    eliminarProducto(id:Int): Int
 }
 
 input ProductDto{

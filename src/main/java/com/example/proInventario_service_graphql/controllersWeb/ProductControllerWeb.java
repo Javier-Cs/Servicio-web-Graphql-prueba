@@ -65,8 +65,11 @@ public class ProductControllerWeb {
         productNew.setPrecio(productNewDto.precio());
         productNew.setCantidad(productNewDto.cantidad());
         productNew.setCategoria(categoria);
-
         return productoRepository.save(productNew);
+    }
 
+    @MutationMapping
+    public void eliminarProducto(@Argument int id){
+        productoRepository.deleteById(id);
     }
 }

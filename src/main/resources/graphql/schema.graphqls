@@ -20,10 +20,19 @@ type Categoria{
 
 
 type Mutation{
-    guardarProducto(productoDto: ProductDto):Producto
+    guardarProducto(productoDto: ProductDto):Producto,
+    actualizarProducto(productNewDto: ProductNewDto): Producto
 }
 
 input ProductDto{
+    nombre : String,
+    precio : Float,
+    cantidad : Int,
+    categoriaId : Int
+}
+
+input ProductNewDto{
+    id: Int,
     nombre : String,
     precio : Float,
     cantidad : Int,

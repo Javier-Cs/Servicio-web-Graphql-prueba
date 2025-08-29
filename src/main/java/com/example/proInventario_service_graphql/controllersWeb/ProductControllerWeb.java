@@ -1,5 +1,6 @@
 package com.example.proInventario_service_graphql.controllersWeb;
 
+import com.example.proInventario_service_graphql.dto.ProductDto;
 import com.example.proInventario_service_graphql.entities.Categoria;
 import com.example.proInventario_service_graphql.entities.Producto;
 import com.example.proInventario_service_graphql.repository.CategoriaRepository;
@@ -29,7 +30,6 @@ public class ProductControllerWeb {
     @QueryMapping
     public List<Producto> listarProductos(){
         return productoRepository.findAll();
-
     }
 
     @QueryMapping
@@ -45,9 +45,13 @@ public class ProductControllerWeb {
     }
 
     @MutationMapping
-    public Producto guardarProducto(@Argument Producto producto){
-        return productoRepository.save(producto);
+    public Producto guardarProducto(@Argument ProductDto productoDto){
+        Categoria  categoria = categoriaRepository.findById(productoDto.categoriaId()).orElse(null);
+        Producto productoDb = new  Producto();
+        productoDb.setNombre(productoDto.nombre());
+        productoDb.setPrecio(productoDto.precio());
+        productoDb.setCantidad(productoDto.cantidad());
+        productoDb.setCategoria(categoria);
+        return productoRepository.save(productoDb);
     }
-
-
 }

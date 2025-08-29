@@ -1,0 +1,67 @@
+
+// obtener todos los productos
+query{
+  listarProductos{
+    id,nombre, precio,categoria {
+      id
+    }
+  }
+}
+
+
+
+
+// obtener un producto mediante su id
+query{
+  listarById(id: 81){
+    nombre, categoria{
+      nombre}
+  }
+}
+
+
+
+// guardar un producto usando una mutation
+mutation{
+  guardarProducto(
+    productoDto:  {
+       nombre: "juaquin",
+       precio: 340,
+       cantidad: 6,
+       categoriaId: 5
+    }
+  ){
+    id,nombre,precio,cantidad,categoria{
+      nombre
+    }
+  }
+}
+
+
+// actualizar un producto
+mutation{
+  actualizarProducto(
+    productNewDto:  {
+       id: 81,
+       nombre: "Mirian",
+       precio: 383,
+       cantidad: 19,
+       categoriaId: 8
+    }
+  ){
+    id,
+    nombre,
+    precio,
+    cantidad,
+    categoria{
+      id
+    }
+  }
+}
+
+// eliminar un producto
+mutation{
+  eliminarProducto(
+    id: 81
+  )
+}

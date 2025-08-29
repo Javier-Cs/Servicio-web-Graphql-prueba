@@ -6,6 +6,8 @@ import com.example.proInventario_service_graphql.repository.CategoriaRepository;
 import com.example.proInventario_service_graphql.repository.ProductoRepository;
 import graphql.GraphQLError;
 import graphql.GraphqlErrorBuilder;
+import org.springframework.data.rest.webmvc.ResourceNotFoundException;
+import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.stereotype.Controller;
 
@@ -32,6 +34,13 @@ public class ProductControllerWeb {
     @QueryMapping
     public List<Categoria> listarCategorias(){
         return categoriaRepository.findAll();
+    }
+
+    @QueryMapping
+    public Producto listarById(@Argument int id){
+        return productoRepository.findById(id).orElseThrow(
+                () -> new RuntimeException(String.format("Producto not found with id " + id))
+        );
     }
 
 }

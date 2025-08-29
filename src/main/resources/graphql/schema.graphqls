@@ -17,3 +17,14 @@ type Categoria{
     id:  Int,
     nombre: String
 }
+
+
+type Mutation{
+    guardarProducto(producto: ProductoInput):Producto
+}
+
+input ProductoInput{
+    nombre : String,
+    precio : Float,
+    cantidad : Int
+}
